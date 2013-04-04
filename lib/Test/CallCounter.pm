@@ -2,8 +2,9 @@ package Test::CallCounter;
 use strict;
 use warnings;
 use 5.008001;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
+use Scalar::Util 1.24 qw(set_prototype);
 use Class::Method::Modifiers qw(install_modifier);
 
 our $COUNTER;
@@ -17,11 +18,17 @@ sub new {
         count  => 0,
     }, $class;
 
+    my $prototype = prototype($klass->can($method));
+
     install_modifier(
         $klass, 'before', $method, sub {
             $self->{count}++
         }
     );
+
+    if (defined $prototype) {
+        &set_prototype($klass->can($method), $prototype);
+    }
 
     return $self;
 }
@@ -80,6 +87,8 @@ Tokuhiro Matsuno E<lt>tokuhirom@gmail.comE<gt>
 =head1 SEE ALSO
 
 L<Test::Mock::Guard>
+
+If you want to do more complex operation while monkey patching, see also L<Test::Resub>.
 
 =head1 LICENSE
 
