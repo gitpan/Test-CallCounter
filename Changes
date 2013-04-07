@@ -1,5 +1,9 @@
 Revision history for Perl extension Test-CallCounter
 
+0.04 2013-04-07T14:07:10Z
+
+    - Fixed deps.
+
 0.03 2013-04-04T11:20:12Z
 
     - Restore prototype after wrapping

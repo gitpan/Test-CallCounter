@@ -26,14 +26,15 @@ no_index:
 provides:
   Test::CallCounter:
     file: lib/Test/CallCounter.pm
-    version: 0.03
+    version: 0.04
 requires:
+  Class::Method::Modifiers: 0
   Scalar::Util: 1.24
   perl: 5.008001
 resources:
   bugtracker: https://github.com/tokuhirom/Test-CallCounter/issues
   homepage: https://github.com/tokuhirom/Test-CallCounter
   repository: git://github.com/tokuhirom/Test-CallCounter.git
-version: 0.03
+version: 0.04
 x_contributors:
   - 'soh335 <sugarbabe335@gmail.com>'
